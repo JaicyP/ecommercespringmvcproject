@@ -1,0 +1,154 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.jaicy</groupId>
+  <artifactId>ecommercespringmvc</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>ecommercespringmvc Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+   <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>6.0.0</spring.version>
+    </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- Jakarta EE dependencies required for Tomcat 10 -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>10.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Servlet API (Jakarta EE 10) -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JSP API (Jakarta EE 10) -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JSTL -->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <!-- Spring Core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Spring Context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Spring Web MVC -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        
+        <!--Yet Another Serialization SON (JSON) Binding framework-->
+        <dependency>
+           <groupId>org.eclipse</groupId>
+           <artifactId>yasson</artifactId>
+           <version>3.0.3</version>
+       </dependency>
+
+
+      <!--mysql connector j-->
+       <dependency>
+         <groupId>com.mysql</groupId>
+         <artifactId>mysql-connector-j</artifactId>
+         <version>8.0.33</version>
+      </dependency> 
+
+        <!-- Spring JDBC (Optional, if using database connections) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        
+         <!-- file upload-->
+        <dependency>
+          <groupId>commons-fileupload</groupId>
+          <artifactId>commons-fileupload</artifactId>
+          <version>1.5</version> <!-- 1.5 is latest as of now -->
+        </dependency>
+        
+        <dependency>
+           <groupId>commons-io</groupId>
+           <artifactId>commons-io</artifactId>
+           <version>2.11.0</version>
+       </dependency>
+       
+       <!-- json object-->
+       <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-core</artifactId>
+         <version>2.15.3</version>
+       </dependency>
+
+       <dependency>
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-annotations</artifactId>
+         <version>2.15.3</version>
+       </dependency>
+       <dependency>
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-databind</artifactId>
+         <version>2.15.3</version>
+       </dependency>
+
+      <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+        <version>2.15.2</version> <!-- match your jackson version -->
+     </dependency>
+     
+     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+   <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.38</version>
+   </dependency>
+   
+   <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+ <dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-jpa</artifactId>
+    <version>3.4.2</version>
+ </dependency>
+
+  </dependencies>
+  <build>
+    <finalName>ecommercespringmvc</finalName>
+  </build>
+</project>
