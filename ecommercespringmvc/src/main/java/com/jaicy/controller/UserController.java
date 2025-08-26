@@ -32,8 +32,10 @@ public class UserController {
 	}
 	
 	@PostMapping("/create")
-	public String createUser(@ModelAttribute UserDto userDto,Model model) {
-		userService.createUser(userDto);
+	public String createUser(@ModelAttribute UserDto userDto,@ModelAttribute Address address,Model model) {
+		userDto.setAddress(address);
+		String str=userService.createUser(userDto);
+		
 		return "result";
 		
 	}
