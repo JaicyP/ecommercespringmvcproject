@@ -1,6 +1,5 @@
 package com.jaicy.service;
 
-
-public interface AddressService {
-
-}
+//public interface AddressService {
+//
+//}

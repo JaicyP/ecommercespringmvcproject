@@ -1,7 +1,10 @@
 package com.jaicy.entity;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,10 +27,10 @@ public class Address {
 	private String state;
 	private String pincode;
 	private String country;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
-	private Integer userId;
-	private boolean isDefault;
+	private User user;
+	private boolean isDefault=true;
 	
 
 }

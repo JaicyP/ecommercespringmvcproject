@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.jaicy.entity.Address;
 
-@Repository
+
 public interface AddressRepository extends JpaRepository<Address,Integer>{
 
 }

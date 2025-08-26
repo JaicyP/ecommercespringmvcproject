@@ -14,20 +14,17 @@
     <!-- Enable Spring MVC -->
     <mvc:annotation-driven/>
 
-    <!-- Scan Controller Package -->
-    <context:component-scan base-package="com.jaicy"/>
+     <!-- Scan only controllers in the web context -->
+  <context:component-scan base-package="com.jaicy">
+    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
+  </context:component-scan>
     
       <!-- Allow static files -->
     <mvc:resources mapping="/Asset/**" location="/Asset/" />
     <mvc:default-servlet-handler/>
     
 	
-    <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/ecommercemvc?useSSL=false" />
-		<property name="username" value="root" />
-		<property name="password" value="Sep17224$%^&amp;*" />
-	</bean>
 
 
 	<bean
