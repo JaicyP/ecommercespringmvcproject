@@ -39,7 +39,7 @@ public class User {
 	private String password;
 	@OneToMany(mappedBy="user")
 	private List<Address> address=new ArrayList<Address>();
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="cart_id")
 	private Cart cart;
 	

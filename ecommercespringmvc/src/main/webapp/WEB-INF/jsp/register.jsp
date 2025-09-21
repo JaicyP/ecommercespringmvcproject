@@ -7,9 +7,57 @@
 <head>
   <meta charset="UTF-8">
   <title>Register Page</title>
+  <style>
+.container{
+margin-top:100px;
+margin-bottom:50px;
+margin-left:190px;
+margin-right:190px;
+}
+h1{
+ margin: 20px auto; 
+ text-align:center;
+ }
+  .form{
+     display:flex;
+     justify-content:center;
+     flex-direction:column;
+   
+  }
+  input[type=text],[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+select {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 8px 0;
+  
+}
+ input[type=submit]{
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 20px auto;  
+  cursor: pointer;
+  width:50%;
+  border-radius:50px;
+  display:block;
+} 
+</style>
 </head>
 <body>
-<p>This is the register page</p>
+<jsp:include page="navbar1.jsp" />
+<div class="container">
+<h1>Sign Up</h1>
+<p style="color:red">${mess1}</p>
 <form action="<c:url value='/user/create'/>" method="post" class="form">
 
      <label>Name</label>
@@ -33,8 +81,8 @@
      <input type="text" name="state" placeholder="state" required><br/>
      <input type="text" name="pincode" placeholder="pincode" required><br/>
      <input type="text" name="country" placeholder="country" required><br/>
-     
      <input type="submit">
 </form>
+</div>
 </body>
 </html>

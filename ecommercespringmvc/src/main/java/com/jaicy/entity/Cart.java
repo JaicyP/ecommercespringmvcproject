@@ -3,7 +3,6 @@ package com.jaicy.entity;
 import java.time.LocalDateTime;
 
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +24,7 @@ public class Cart {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer cartId;
 	@OneToOne(mappedBy="cart")
-	private User user;                  
+	private User user; 
 	private LocalDateTime createdAt;
 
 }
