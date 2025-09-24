@@ -174,6 +174,7 @@ public class CartServiceImpl implements CartService{
 		}
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("total", totalPrice);
+		System.out.println(map);
 		return map;
 	}
 

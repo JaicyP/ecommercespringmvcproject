@@ -56,7 +56,7 @@ hr {
   margin: 20px 0; 
 }
 .price{
-  margin-left: 1100px;
+  margin-left: 900px; 
 }
 .pricehead{
  margin-left: 1200px;
@@ -167,11 +167,12 @@ color:green;
                     
       </table> 
       <div class="price">
-         <h3 id="totalPrice" style="margin: auto;"></h3>
+         <h3 id="totalPrice"></h3>
      </div>
  <c:if test="${noOfItems!=0}">  
-       <form action="<c:url value='/order/proceedbuy'/>" >
-           <button class="buy">Proceed To Buy</button>
+       <form action="<c:url value='/order/createorder'/>" method="post">
+           <input type="hidden" name="id" value="${user.cart.cartId}" />
+           <button class="buy" type="submit">Proceed To Buy</button>
        </form>
  </c:if>  
 
@@ -180,9 +181,41 @@ color:green;
 
 
 <script>
-
 document.addEventListener("DOMContentLoaded", function() {
-    var apiUrl = "${pageContext.request.contextPath}/cart/cartcount?id=${user.cart.cartId}";
+   /*  var apiUrl = "${pageContext.request.contextPath}/cart/totalPrice?id=${user.cart.cartId}";
+    console.log("API URL:", apiUrl);
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            var sumTotal = data.total;
+            var totalPrice = document.getElementById("totalPrice");
+           
+            	totalPrice.textContent +=sumTotal;
+            	totalPrice.style.display = "inline-block";
+            
+            
+        })
+        .catch(error => {
+            console.error("Error fetching cart count:", error);
+        }); */
+    var cartId = "${user.cart.cartId}";
+    var totalPriceElement = document.getElementById("totalPrice");
+
+    Promise.all([
+        fetch("${pageContext.request.contextPath}/cart/totalPrice?id=" + cartId).then(r => r.json()),
+        fetch("${pageContext.request.contextPath}/cart/cartcount?id=" + cartId).then(r => r.json())
+    ]).then(([priceData, countData]) => {
+        var sumTotal = priceData.total;
+        var count = countData.count;
+        totalPriceElement.textContent = "SubTotal (" + count + " items): " + sumTotal;
+        totalPriceElement.style.display = "inline-block";
+    }).catch(error => {
+        console.error("Error fetching cart data:", error);
+    });
+});
+
+/* document.addEventListener("DOMContentLoaded", function() {
+    var apiUrl= "${pageContext.request.contextPath}/cart/cartcount?id=${user.cart.cartId}";
     console.log("API URL:", apiUrl);
     fetch(apiUrl)
         .then(response => response.json())
@@ -194,26 +227,9 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error("Error fetching cart count:", error);
         });
-});
+}); */
 
-    document.addEventListener("DOMContentLoaded", function() {
-        var apiUrl = "${pageContext.request.contextPath}/cart/totalPrice?id=${user.cart.cartId}";
-        console.log("API URL:", apiUrl);
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                var sumTotal = data.total;
-                var totalPrice = document.getElementById("totalPrice");
-               /*  var str='SubTotal ('+count+' items): ' */
-                	totalPrice.textContent +=sumTotal;
-                	totalPrice.style.display = "inline-block";
-                
-                
-            })
-            .catch(error => {
-                console.error("Error fetching cart count:", error);
-            });
-    });
+   
     
     function closePopup() {
         document.getElementById('outOfStockPopup').style.display = 'none';
